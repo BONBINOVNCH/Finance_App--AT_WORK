@@ -2,7 +2,7 @@ import CounterAnimated from "./CounterAnimated";
 import CircleChart from "./CircleChart";
 
 type TotalBalance = {
-    totalBanks: [];
+    totalBanks: []; // <--- Не забудь тут поміняти тип !!!!!!!
     totalAccounts: number;
     totalCurrentBalance: number;
 };
@@ -14,7 +14,7 @@ export default function TotalBalance({
 }: TotalBalance) {
     return (
         <section className="flex m-15 flex-col sm:flex-row items-center gap-6 rounded-2xl border border-green-100 bg-white p-7 shadow-sm shadow-green-100/50 font-sans">
-            <div className="flex items-center justify-center min-w-[120px] max-w-[200px]">
+            <div className="flex items-center justify-center min-w-[100px] max-w-[180px]">
                 <CircleChart totalBanks={totalBanks} />
             </div>
 
