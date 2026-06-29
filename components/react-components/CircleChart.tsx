@@ -4,7 +4,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-export default function CircleChart({}) {
+export default function CircleChart({ totalBanks }: { totalBanks: [] }) {
     return (
         <Pie
             data={{
@@ -19,7 +19,7 @@ export default function CircleChart({}) {
                             "rgb(255, 205, 86)",
                         ],
                         hoverOffset: 4,
-                        borderWidth: 10,
+                        borderWidth: 0,
                     },
                 ],
             }}
