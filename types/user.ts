@@ -1,1 +1,1 @@
-export interface User {} // <--- Згодом дороби цей тип!!!!!!!!!
+export default interface User {} // <--- Згодом дороби цей тип!!!!!!!!!

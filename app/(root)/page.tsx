@@ -18,7 +18,7 @@ export default async function Home() {
                 />
             </section>
 
-            <RigthSidebar user={{}} allTransactio={[]} allBanks={[]} />
+            <RigthSidebar user={{}} allTransactio={[]} allBanks={[{}, {}]} />
         </div>
     );
 }
