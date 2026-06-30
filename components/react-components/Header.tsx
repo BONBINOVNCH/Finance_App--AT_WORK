@@ -8,7 +8,7 @@ export default function Header({
     selectedText?: string;
 }) {
     return (
-        <header className="header font-sans rounded-xl border-b-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-100 px-6 py-10 text-center shadow-sm shadow-green-100">
+        <header className="header font-sans rounded-xl border-b-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-100 px-6 py-10 text-center shadow-sm shadow-green-100 m-8">
             <h1 className="header_main_text text-3xl font-extrabold tracking-tight text-green-900 md:text-4xl">
                 {mainText}{" "}
                 {selectedText ? (

@@ -11,7 +11,7 @@ export default function DashboardLayout({
     };
     return (
         <main className="flex h-screen w-full">
-            <aside>
+            <aside className="border-r-1 border-emerald-100">
                 <Sidebar user={logged} />
             </aside>
             <div className="main_block flex-1">{children}</div>

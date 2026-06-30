@@ -13,8 +13,8 @@ export default function TotalBalance({
     totalCurrentBalance,
 }: TotalBalance) {
     return (
-        <section className="flex m-15 flex-col sm:flex-row items-center gap-6 rounded-2xl border border-green-100 bg-white p-7 shadow-sm shadow-green-100/50 font-sans">
-            <div className="flex items-center justify-center min-w-[100px] max-w-[180px]">
+        <section className="flex m-8 flex-col sm:flex-row items-center gap-6 rounded-2xl border border-green-100 bg-white p-7 shadow-sm shadow-green-100/50 font-sans">
+            <div className="flex items-center justify-center min-w-[100px] max-w-[160px]">
                 <CircleChart totalBanks={totalBanks} />
             </div>
 
