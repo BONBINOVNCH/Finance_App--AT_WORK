@@ -1,11 +1,13 @@
 import CounterAnimated from "./CounterAnimated";
 import CircleChart from "./CircleChart";
 
-type TotalBalance = {
-    totalBanks: []; // <--- Не забудь тут поміняти тип !!!!!!!
-    totalAccounts: number;
-    totalCurrentBalance: number;
-};
+import type TotalBalance from "@/types/totalBalance";
+
+// interface TotalBalance {
+//     totalBanks: []; // <--- Не забудь тут поміняти тип !!!!!!!
+//     totalAccounts: number;
+//     totalCurrentBalance: number;
+// }
 
 export default function TotalBalance({
     totalBanks,

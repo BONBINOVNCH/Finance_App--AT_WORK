@@ -4,11 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
+import type { User } from "@/types/User";
+
 import { AiOutlineHome } from "react-icons/ai";
 import { CiCoinInsert } from "react-icons/ci";
 import { MdHistoryEdu, MdAddCard } from "react-icons/md";
 
-interface User {} // <--- Згодом дороби цей тип!!!!!!!!!
+// interface User {} // <--- Згодом дороби цей тип!!!!!!!!!
 
 const navLinks = [
     { href: "/", label: "Home", icon: <AiOutlineHome className="text-xl" /> },
