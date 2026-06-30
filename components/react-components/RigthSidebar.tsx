@@ -12,8 +12,8 @@ export default function RigthSidebar({
     allBanks: TotalBanks[];
 }) {
     return (
-        <section className="scrollbar-none hidden xl:block">
+        <aside className="scrollbar-none hidden xl:block">
             <h1>sidebarR</h1>
-        </section>
+        </aside>
     );
 }
