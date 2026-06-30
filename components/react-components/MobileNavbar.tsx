@@ -48,9 +48,9 @@ export default function MobileNavbar() {
                     <RxHamburgerMenu size={24} />
                 </SheetTrigger>
                 <SheetContent side={"left"}>
-                    <header className="sidebar_header md:px-3 flex justify-center  py-2  border-b border-gray-100/80">
+                    <header className="sidebar_header px-3 flex justify-start py-2  border-b border-gray-100/80">
                         <Link
-                            className="flex items-center gap-3 w-max items-center md:p-1.5 transition-all duration-300 hover:bg-gray-50/50"
+                            className="flex  gap-3 w-max items-center md:p-1.5 transition-all duration-300 hover:bg-gray-50/50"
                             href="/"
                         >
                             <div className="flex items-center justify-centerbg-gradient-to-tr from-green-500 to-emerald-400 rounded-full shadow-md shadow-emerald-100 transition-transform duration-300 group-hover:scale-105 shrink-0">
