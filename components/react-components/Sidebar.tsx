@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-import type { User } from "@/types/User";
+import type User from "@/types/user";
 
 import { AiOutlineHome } from "react-icons/ai";
 import { CiCoinInsert } from "react-icons/ci";

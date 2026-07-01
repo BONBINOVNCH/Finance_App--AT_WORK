@@ -1,3 +1,5 @@
+import SignForm from "@/components/react-components/SignForm";
+
 export default function Login() {
-    return <h1>Login</h1>;
+    return <SignForm varient="login" />;
 }
