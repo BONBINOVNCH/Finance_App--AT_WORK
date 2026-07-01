@@ -20,8 +20,8 @@ export default function RigthSidebar({
                     src={"/images/green-gradient.png"}
                     alt="#"
                     height={60}
-                    width={392}
-                    className="h-[120px]"
+                    width={0}
+                    className="h-[120px] w-[392px]"
                 />
             </section>
             <div className="right-sidebar_header">
@@ -51,16 +51,16 @@ export default function RigthSidebar({
                         + Add Bank
                     </button>
                 </div>
-                <div className="right-sidebar_banks_cards">
+                <div className="right-sidebar_banks_cards w-[344px]">
                     {allBanks.length > 0 ? (
                         <div className="right-sidebar_banks_cards_container">
-                            <div className="right-sidebar_banks_card_container relative">
-                                <div className="right-sidebar_banks_card_personal_container z-[4]">
+                            <div className="right-sidebar_banks_card_container relative ">
+                                <div className="right-sidebar_banks_card_personal_container z-[4] relative">
                                     <UserCard />
                                 </div>
 
                                 {allBanks[1] ? (
-                                    <div className="right-sidebar_banks_card_container absolute left-10">
+                                    <div className="right-sidebar_banks_card_container absolute z-[3] w-full right-[-28px] bottom-[-32px]">
                                         <div className="right-sidebar_banks_card_personal_container">
                                             <UserCard />
                                         </div>
