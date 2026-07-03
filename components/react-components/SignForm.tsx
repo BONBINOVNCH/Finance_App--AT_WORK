@@ -1,6 +1,6 @@
 "use client";
-import * as React from "react";
-import { Controller, useForm } from "react-hook-form";
+
+import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -8,14 +8,7 @@ import * as z from "zod";
 import { formSchema } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-    Field,
-    FieldDescription,
-    FieldError,
-    FieldGroup,
-    FieldLabel,
-} from "@/components/ui/field";
+
 import InputTemplate from "./InputTemplate";
 
 export default function SignForm({
@@ -52,11 +45,11 @@ export default function SignForm({
 
     return (
         <section className="auth">
-            <article className="auth_title">
-                <h1 className="auth_title_bogText">
+            <article className="auth_title flex flex-col gap-2 mb-8 text-left">
+                <h1 className="auth_title_bigText text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl font-sans">
                     {varient === "login" ? "Login" : "Sign up"}
                 </h1>
-                <p className="auth_title_smallText">
+                <p className="auth_title_smallText text-sm font-medium text-gray-500 md:text-base ">
                     {varient === "login"
                         ? "Welcome back! Please enter your details."
                         : "Please enter your details."}
@@ -83,27 +76,34 @@ export default function SignForm({
                             placeholder="Enter your password"
                             label="Password"
                         />
-                        <Button type="submit">Submit</Button>
+                        <Button
+                            className="w-full mt-2 py-3 px-4 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-semibold text-base rounded-xl shadow-md shadow-emerald-500/10 hover:shadow-lg hover:shadow-emerald-500/20 active:scale-[0.98] transition-all duration-200  cursor-pointer"
+                            type="submit"
+                        >
+                            Submit
+                        </Button>
                     </form>
                 ) : (
                     <form
                         className="auth_form"
                         onSubmit={form.handleSubmit(onSubmit)}
                     >
-                        <InputTemplate
-                            type="text"
-                            control={form.control}
-                            name="firstName"
-                            placeholder="Enter your first name"
-                            label="First Name"
-                        />
-                        <InputTemplate
-                            type="text"
-                            control={form.control}
-                            name="lastName"
-                            placeholder="Enter your last name"
-                            label="Last name"
-                        />
+                        <div className="auth_form_container flex gap-4 flex-wrap sm:flex-nowrap">
+                            <InputTemplate
+                                type="text"
+                                control={form.control}
+                                name="firstName"
+                                placeholder="Enter your first name"
+                                label="First Name"
+                            />
+                            <InputTemplate
+                                type="text"
+                                control={form.control}
+                                name="lastName"
+                                placeholder="Enter your last name"
+                                label="Last name"
+                            />
+                        </div>
                         <InputTemplate
                             type="text"
                             control={form.control}
@@ -111,34 +111,39 @@ export default function SignForm({
                             placeholder="Enter your address"
                             label="Address"
                         />
-                        <InputTemplate
-                            type="text"
-                            control={form.control}
-                            name="state"
-                            placeholder="ex: CC"
-                            label="State"
-                        />
-                        <InputTemplate
-                            type="number"
-                            control={form.control}
-                            name="postalCode"
-                            placeholder="ex: 11101"
-                            label="Postal code"
-                        />
-                        <InputTemplate
-                            type="text"
-                            control={form.control}
-                            name="dateOfBirth"
-                            placeholder="yyyy-mm-dd"
-                            label="Date Of Birth"
-                        />
-                        <InputTemplate
-                            type="number"
-                            control={form.control}
-                            name="ssn"
-                            placeholder="1234"
-                            label="SSN"
-                        />
+                        <div className="auth_form_container flex gap-4 flex-wrap sm:flex-nowrap">
+                            <InputTemplate
+                                type="text"
+                                control={form.control}
+                                name="state"
+                                placeholder="ex: CC"
+                                label="State"
+                            />
+                            <InputTemplate
+                                type="number"
+                                control={form.control}
+                                name="postalCode"
+                                placeholder="ex: 11101"
+                                label="Postal code"
+                            />
+                        </div>
+
+                        <div className="auth_form_container flex gap-4 flex-wrap sm:flex-nowrap">
+                            <InputTemplate
+                                type="text"
+                                control={form.control}
+                                name="dateOfBirth"
+                                placeholder="yyyy-mm-dd"
+                                label="Date Of Birth"
+                            />
+                            <InputTemplate
+                                type="number"
+                                control={form.control}
+                                name="ssn"
+                                placeholder="1234"
+                                label="SSN"
+                            />
+                        </div>
                         <InputTemplate
                             type="email"
                             control={form.control}
@@ -155,7 +160,12 @@ export default function SignForm({
                             label="Password"
                         />
 
-                        <Button type="submit">Submit</Button>
+                        <Button
+                            type="submit"
+                            className="w-full mt-2 py-3 px-4 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-semibold text-base rounded-xl shadow-md shadow-emerald-500/10 hover:shadow-lg hover:shadow-emerald-500/20 active:scale-[0.98] transition-all duration-200  cursor-pointer"
+                        >
+                            Submit
+                        </Button>
                     </form>
                 )}
             </div>
