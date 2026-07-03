@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AuthLayout({
     children,
@@ -34,10 +35,6 @@ export default function AuthLayout({
 
                     <div className="w-full my-auto mx-auto max-w-md p-6 md:p-8 bg-white border border-gray-200/80 rounded-2xl shadow-sm ring-1 ring-gray-950/[0.02] backdrop-blur-sm transition-all duration-300 hover:border-emerald-500/30 hover:shadow-md hover:shadow-emerald-500/[0.02]">
                         {children}
-                    </div>
-
-                    <div className="mt-8 text-center text-xs text-gray-400">
-                        © 2026 FUNnance. All rights reserved.
                     </div>
                 </div>
 
