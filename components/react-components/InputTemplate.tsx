@@ -24,6 +24,7 @@ interface InputType {
     name: FieldPath<z.infer<typeof personalformSchema>>;
     placeholder: string;
     label: string;
+    type: string;
 }
 
 export default function InputTemplate({
@@ -31,6 +32,7 @@ export default function InputTemplate({
     name,
     placeholder,
     label,
+    type,
 }: InputType) {
     return (
         <Controller
@@ -44,7 +46,7 @@ export default function InputTemplate({
                             {...field}
                             placeholder={placeholder}
                             className="form_input"
-                            type={name === "password" ? "password" : "text"}
+                            type={type}
                         />
                     </div>
 

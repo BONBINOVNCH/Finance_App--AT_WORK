@@ -18,15 +18,32 @@ import {
 } from "@/components/ui/field";
 import InputTemplate from "./InputTemplate";
 
-export default function SignForm({ varient }: { varient: string }) {
+export default function SignForm({
+    varient,
+}: {
+    varient: "login" | "sign-up";
+}) {
     const [user, setUser] = useState(null);
     const personalFormSchema = formSchema(varient);
     const form = useForm<z.infer<typeof personalFormSchema>>({
         resolver: zodResolver(personalFormSchema),
-        defaultValues: {
-            email: "",
-            password: "",
-        },
+        defaultValues:
+            varient === "login"
+                ? {
+                      email: "",
+                      password: "",
+                  }
+                : {
+                      email: "",
+                      password: "",
+                      firstName: "",
+                      lastName: "",
+                      address1: "",
+                      state: "",
+                      postalCode: "",
+                      dateOfBirth: "",
+                      ssn: "",
+                  },
     });
 
     function onSubmit(data: z.infer<typeof personalFormSchema>) {
@@ -53,12 +70,14 @@ export default function SignForm({ varient }: { varient: string }) {
                         onSubmit={form.handleSubmit(onSubmit)}
                     >
                         <InputTemplate
+                            type="email"
                             control={form.control}
                             name="email"
                             placeholder="Enter your email"
                             label="Email"
                         />
                         <InputTemplate
+                            type="password"
                             control={form.control}
                             name="password"
                             placeholder="Enter your password"
@@ -72,10 +91,68 @@ export default function SignForm({ varient }: { varient: string }) {
                         onSubmit={form.handleSubmit(onSubmit)}
                     >
                         <InputTemplate
+                            type="text"
+                            control={form.control}
+                            name="firstName"
+                            placeholder="Enter your first name"
+                            label="First Name"
+                        />
+                        <InputTemplate
+                            type="text"
+                            control={form.control}
+                            name="lastName"
+                            placeholder="Enter your last name"
+                            label="Last name"
+                        />
+                        <InputTemplate
+                            type="text"
+                            control={form.control}
+                            name="address1"
+                            placeholder="Enter your address"
+                            label="Address"
+                        />
+                        <InputTemplate
+                            type="text"
+                            control={form.control}
+                            name="state"
+                            placeholder="ex: CC"
+                            label="State"
+                        />
+                        <InputTemplate
+                            type="number"
+                            control={form.control}
+                            name="postalCode"
+                            placeholder="ex: 11101"
+                            label="Postal code"
+                        />
+                        <InputTemplate
+                            type="text"
+                            control={form.control}
+                            name="dateOfBirth"
+                            placeholder="yyyy-mm-dd"
+                            label="Date Of Birth"
+                        />
+                        <InputTemplate
+                            type="number"
+                            control={form.control}
+                            name="ssn"
+                            placeholder="1234"
+                            label="SSN"
+                        />
+                        <InputTemplate
+                            type="email"
                             control={form.control}
                             name="email"
                             placeholder="Enter your email"
                             label="Email"
+                        />
+
+                        <InputTemplate
+                            type="password"
+                            control={form.control}
+                            name="password"
+                            placeholder="Enter your password"
+                            label="Password"
                         />
 
                         <Button type="submit">Submit</Button>
