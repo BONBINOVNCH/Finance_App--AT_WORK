@@ -11,14 +11,17 @@ import { formSchema } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 import InputTemplate from "./InputTemplate";
+import signUpUser from "@/app/(auth)/sign_up/action";
 
 export default function SignForm({
     varient,
 }: {
     varient: "login" | "sign-up";
 }) {
-    const [user, setUser] = useState(null);
     const personalFormSchema = formSchema(varient);
+    const [user, setUser] = useState({});
+    const [loading, setLoading] = useState(false);
+
     const form = useForm<z.infer<typeof personalFormSchema>>({
         resolver: zodResolver(personalFormSchema),
         defaultValues:
@@ -40,8 +43,22 @@ export default function SignForm({
                   },
     });
 
-    function onSubmit(data: z.infer<typeof personalFormSchema>) {
-        console.log(data);
+    async function onSubmit(data: z.infer<typeof personalFormSchema>) {
+        try {
+            setLoading(true);
+            if (varient === "login") {
+            }
+            if (varient === "sign-up") {
+                const result = await signUpUser(data);
+                setUser(() => data);
+            }
+        } catch {
+        } finally {
+            setLoading(false);
+            console.log(data);
+            console.log(user);
+            console.log(loading);
+        }
     }
 
     return (
