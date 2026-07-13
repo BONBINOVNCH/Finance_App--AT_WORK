@@ -55,8 +55,6 @@ export default function SignForm({
         } catch {
         } finally {
             setLoading(false);
-            console.log(data);
-            console.log(user);
             console.log(loading);
         }
     }

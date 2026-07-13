@@ -76,7 +76,6 @@ export const formSchema = (varient: string) =>
                       .string()
                       .min(9, { message: "SSN must be at least 9 digits" }),
 
-        // These fields are always validated
         email: z
             .string()
             .min(1, { message: "Email is required" })
