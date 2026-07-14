@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 
 import InputTemplate from "./InputTemplate";
 import signUpUser from "@/app/(auth)/sign_up/action";
+import loginUser from "@/app/(auth)/login/action";
 
 export default function SignForm({
     varient,
@@ -47,10 +48,14 @@ export default function SignForm({
         try {
             setLoading(true);
             if (varient === "login") {
+                const result = await loginUser(data);
+                console.log(result);
+                setUser(() => result.data);
             }
             if (varient === "sign-up") {
                 const result = await signUpUser(data);
-                setUser(() => data);
+                console.log(result);
+                setUser(() => result.data);
             }
         } catch {
         } finally {

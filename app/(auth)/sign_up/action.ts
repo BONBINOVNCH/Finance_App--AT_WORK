@@ -49,7 +49,7 @@ export default async function signUpUser(
 
         return { success: true, data: newObjectUser };
     } catch (e: any) {
-        console.log("Щось пішло не так ): ", e);
+        console.log("Щось пішло не так ): ", e.message);
         return {
             success: false,
             error: e.message,
