@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import InputTemplate from "./InputTemplate";
 import signUpUser from "@/app/(auth)/sign_up/action";
 import loginUser from "@/app/(auth)/login/action";
+import User from "@/types/user";
 
 export default function SignForm({
     varient,
@@ -20,7 +21,7 @@ export default function SignForm({
     varient: "login" | "sign-up";
 }) {
     const personalFormSchema = formSchema(varient);
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState();
     const [loading, setLoading] = useState(false);
 
     const form = useForm<z.infer<typeof personalFormSchema>>({
@@ -83,6 +84,7 @@ export default function SignForm({
                         className="auth_form"
                         onSubmit={form.handleSubmit(onSubmit)}
                     >
+                        {/* <p>{user ? user.firstName : ""}</p> */}
                         <InputTemplate
                             type="email"
                             control={form.control}
