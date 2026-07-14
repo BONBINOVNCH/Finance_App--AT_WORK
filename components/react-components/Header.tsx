@@ -1,12 +1,18 @@
+"use client";
+
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState, AppDispatch } from "@/store/store";
+
 export default function Header({
     mainText,
     smallText,
-    selectedText,
 }: {
     mainText: string;
     smallText: string;
-    selectedText?: string;
 }) {
+    const user = useSelector((state: RootState) => state.user);
+    console.log(user);
+    const selectedText = user.firstName;
     return (
         <header className="header font-sans rounded-xl border-b-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-100 px-6 py-10 text-center shadow-sm shadow-green-100 m-8">
             <h1 className="header_main_text text-3xl font-extrabold tracking-tight text-green-900 md:text-4xl">

@@ -31,7 +31,7 @@ const navLinks = [
     },
 ];
 
-export default function Sidebar({ user }: { user: User }) {
+export default function Sidebar({ user }: { user: any }) {
     // <--- Маєш то доробити!!!!!!
 
     const pathname = usePathname();

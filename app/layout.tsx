@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { getCurrentUser } from "@/lib/auth";
+import StoreProvider from "@/components/react-components/StoreProvider";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -35,7 +36,9 @@ export default async function RootLayout({
             lang="en"
             className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} h-full antialiased scrollbar-none`}
         >
-            <body className="min-h-full flex flex-col">{children}</body>
+            <body className="min-h-full flex flex-col">
+                <StoreProvider initialUser={user}>{children}</StoreProvider>
+            </body>
         </html>
     );
 }
