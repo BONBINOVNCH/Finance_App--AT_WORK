@@ -5,6 +5,8 @@ import z from "zod";
 import User from "@/backend/schemas/UserSchema";
 import bcrypt from "bcryptjs";
 import connectToDB from "@/backend/config/db";
+import { cookies } from "next/headers";
+import signJwt from "@/lib/auth";
 
 const personalFormSchema = formSchema("login");
 
@@ -17,34 +19,36 @@ export default async function loginUser(
         console.log("підключоне");
 
         const existingUser = await User.findOne({ email: data.email });
-        if (existingUser) {
-            const hash = await existingUser.password;
-            const match = await bcrypt.compare(data.password, hash);
-
-            if (match) {
-                console.log("Юзера залоговано!");
-                const existingObjectUser = JSON.parse(
-                    JSON.stringify(existingUser),
-                );
-                delete existingObjectUser.password;
-
-                return { success: true, data: existingObjectUser };
-            } else {
-                console.log("Неправильний пароль!");
-                return {
-                    success: false,
-                    error: "no_password",
-                    message: "Неправильний пароль!",
-                };
-            }
-        } else {
-            console.log("Нема такого емейлу!");
-            return {
-                success: false,
-                error: "no_email",
-                message: "Нема такого емейлу!",
-            };
+        if (!existingUser) {
+            return { success: false, message: "Неправильний email або пароль" };
         }
+
+        const match = await bcrypt.compare(
+            data.password,
+            existingUser.password,
+        );
+        if (!match) {
+            return { success: false, message: "Неправильний email або пароль" };
+        }
+
+        const token = await signJwt({
+            userId: existingUser._id.toString(),
+            email: existingUser.email,
+        });
+
+        const cookieStore = await cookies();
+        cookieStore.set("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "strict",
+            maxAge: 60 * 60 * 24 * 7,
+            path: "/",
+        });
+
+        const userWithoutPassword = JSON.parse(JSON.stringify(existingUser));
+        delete userWithoutPassword.password;
+
+        return { success: true, data: userWithoutPassword };
     } catch (e: any) {
         console.log("Щось пішло не так ): ", e.message);
         return {

@@ -2,8 +2,10 @@
 
 import connectToDB from "@/backend/config/db";
 import User from "@/backend/schemas/UserSchema";
+import signJwt from "@/lib/auth";
 import { formSchema } from "@/lib/utils";
 import bcrypt from "bcryptjs";
+import { cookies } from "next/headers";
 import z from "zod";
 
 const personalFormSchema = formSchema("sign-up");
@@ -42,6 +44,20 @@ export default async function signUpUser(
         const newUser = await User.create({
             ...data,
             password: hashPassword,
+        });
+
+        const token = await signJwt({
+            userId: newUser._id.toString(),
+            email: newUser.email,
+        });
+
+        const cookieStore = await cookies();
+        cookieStore.set("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "strict",
+            maxAge: 60 * 60 * 24 * 7,
+            path: "/",
         });
 
         const newObjectUser = JSON.parse(JSON.stringify(newUser));
