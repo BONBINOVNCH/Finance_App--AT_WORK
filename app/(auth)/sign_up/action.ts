@@ -5,6 +5,7 @@ import User from "@/backend/schemas/UserSchema";
 import { createDwollaCustomer } from "@/lib/actions/dwolla.actions";
 import signJwt from "@/lib/auth";
 import { extractCustomerIdFromUrl, formSchema } from "@/lib/utils";
+import { NewDwollaCustomerParams } from "@/types/dwollaTypes";
 import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
 import z from "zod";
@@ -54,7 +55,7 @@ export default async function signUpUser(
         // const newObjectUser = JSON.parse(JSON.stringify(newUser));
         // delete newObjectUser.password;
 
-        const dwollaUserParams = {
+        const dwollaUserParams: NewDwollaCustomerParams = {
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             email: newUser.email,
