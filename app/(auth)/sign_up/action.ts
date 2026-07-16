@@ -2,8 +2,9 @@
 
 import connectToDB from "@/backend/config/db";
 import User from "@/backend/schemas/UserSchema";
+import { createDwollaCustomer } from "@/lib/actions/dwolla.actions";
 import signJwt from "@/lib/auth";
-import { formSchema } from "@/lib/utils";
+import { extractCustomerIdFromUrl, formSchema } from "@/lib/utils";
 import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
 import z from "zod";
@@ -46,6 +47,37 @@ export default async function signUpUser(
             password: hashPassword,
         });
 
+        if (!newUser) throw new Error("Помилка при створені юзера!");
+
+        console.log(newUser);
+
+        // const newObjectUser = JSON.parse(JSON.stringify(newUser));
+        // delete newObjectUser.password;
+
+        const dwollaUserParams = {
+            firstName: newUser.firstName,
+            lastName: newUser.lastName,
+            email: newUser.email,
+            address1: newUser.address1,
+            state: newUser.state,
+            postalCode: newUser.postalCode,
+            dateOfBirth: newUser.dateOfBirth,
+            ssn: newUser.ssn,
+            city: newUser.city,
+            type: "personal",
+        };
+
+        const dwollaCustomerUrl = await createDwollaCustomer(dwollaUserParams);
+
+        if (!dwollaCustomerUrl) throw new Error("Помилка через Dwolla!");
+
+        const dwollaCustomerId = extractCustomerIdFromUrl(dwollaCustomerUrl);
+
+        newUser.dwollaCustomerId = dwollaCustomerId;
+        newUser.dwollaCustomerUrl = dwollaCustomerUrl;
+
+        await newUser.save();
+
         const token = await signJwt({
             userId: newUser._id.toString(),
             email: newUser.email,
@@ -60,8 +92,13 @@ export default async function signUpUser(
             path: "/",
         });
 
-        const newObjectUser = JSON.parse(JSON.stringify(newUser));
-        delete newObjectUser.password;
+        const newObjectUser = {
+            _id: newUser._id.toString(),
+            firstName: newUser.firstName,
+            lastName: newUser.lastName,
+            email: newUser.email,
+            dwollaCustomerId: newUser.dwollaCustomerId,
+        };
 
         return { success: true, data: newObjectUser };
     } catch (e: any) {

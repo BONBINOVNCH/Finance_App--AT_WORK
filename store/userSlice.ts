@@ -10,6 +10,7 @@ const initialState: User = {
     postalCode: "",
     ssn: "",
     state: "",
+    city: "",
 };
 
 const userSlice = createSlice({

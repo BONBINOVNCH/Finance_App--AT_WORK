@@ -7,6 +7,15 @@ export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
+export function encryptId(id: string) {
+    return btoa(id);
+}
+
+export function extractCustomerIdFromUrl(url: string) {
+    const array = url.split("/");
+    return array[array.length - 1];
+}
+
 // --Zod Schemas-- //
 
 export const formSchema = (varient: string) =>
@@ -36,6 +45,17 @@ export const formSchema = (varient: string) =>
                   }),
 
         address1:
+            varient === "login"
+                ? z
+                      .string()
+                      .max(50, { message: "Maximum 50 characters allowed" })
+                      .optional()
+                : z
+                      .string()
+                      .min(1, { message: "Address is required" })
+                      .max(50, { message: "Maximum 50 characters allowed" }),
+
+        city:
             varient === "login"
                 ? z
                       .string()
