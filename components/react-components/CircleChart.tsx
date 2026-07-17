@@ -6,7 +6,6 @@ import { Pie } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend);
 export default function CircleChart({ totalBanks }: { totalBanks: any[] }) {
     //<---- Дороби цей тип!!!!!
-    console.log(totalBanks);
 
     const bankNames = totalBanks.map((bank) => bank.name);
     const bankBalances = totalBanks.map((bank) => bank.currentBalance);

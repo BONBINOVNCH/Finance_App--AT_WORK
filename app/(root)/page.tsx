@@ -1,13 +1,16 @@
 import Header from "@/components/react-components/Header";
 import RigthSidebar from "@/components/react-components/RigthSidebar";
 import TotalBalance from "@/components/react-components/TotalBalance";
-import { getAccounts } from "@/lib/actions/bank.actions";
+import { getAccount, getAccounts } from "@/lib/actions/bank.actions";
 import { getCurrentUser } from "@/lib/auth";
 
 export default async function Home() {
     const loggedUser = await getCurrentUser();
     console.log(loggedUser);
     const accounts = await getAccounts({ userId: loggedUser._id });
+    const account = await getAccount({ bankId: accounts.data[0].bankId });
+
+    console.log(account);
 
     if (!accounts) {
         return;
