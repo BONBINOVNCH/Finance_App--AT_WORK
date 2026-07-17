@@ -9,7 +9,7 @@ export default function RigthSidebar({
     allTransactio,
     allBanks,
 }: {
-    user: User; //<-- Дороби цей тип!!!!
+    user: User;
     allTransactio: Transaction[];
     allBanks: TotalBanks[];
 }) {

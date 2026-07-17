@@ -23,7 +23,7 @@ export default async function Home() {
                     smallText="Access and manage your transaction"
                 />
                 <TotalBalance
-                    totalBanks={accounts?.totalBanks}
+                    totalBanks={accounts.data}
                     totalAccounts={accounts.data.length}
                     totalCurrentBalance={accounts.totalCurrentBalance}
                 />
@@ -31,8 +31,8 @@ export default async function Home() {
 
             <RigthSidebar
                 user={loggedUser}
-                allTransactio={[]}
-                allBanks={[{}, {}]}
+                allTransactio={accounts?.transactions}
+                allBanks={accounts.data?.slice(0, 2)}
             />
         </div>
     );

@@ -4,19 +4,25 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-export default function CircleChart({ totalBanks }: { totalBanks: [] }) {
+export default function CircleChart({ totalBanks }: { totalBanks: any[] }) {
+    //<---- Дороби цей тип!!!!!
+    console.log(totalBanks);
+
+    const bankNames = totalBanks.map((bank) => bank.name);
+    const bankBalances = totalBanks.map((bank) => bank.currentBalance);
+
     return (
         <Pie
             data={{
-                labels: ["Red", "Blue", "Yellow"],
+                labels: bankNames,
                 datasets: [
                     {
                         label: "Your banks",
-                        data: [100, 50, 100],
+                        data: bankBalances,
                         backgroundColor: [
-                            "rgb(164, 65, 87)",
-                            "rgb(54, 162, 235)",
-                            "rgb(255, 205, 86)",
+                            "rgb(46, 117, 89)",
+                            "rgb(40, 167, 69)",
+                            "rgb(163, 215, 142)",
                         ],
                         hoverOffset: 4,
                         borderWidth: 0,
