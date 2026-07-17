@@ -12,6 +12,8 @@ import {
     createLinkToken,
     exchangePublicToken,
 } from "@/lib/actions/user.actions";
+import { useDispatch } from "react-redux";
+import { updated } from "@/store/userSlice";
 
 export default function PlaidLink({
     user,
@@ -20,6 +22,7 @@ export default function PlaidLink({
     user: User;
     varient: "primary" | "ghost";
 }) {
+    const dispatch = useDispatch();
     const router = useRouter();
 
     const [token, setToken] = useState("");
@@ -36,10 +39,13 @@ export default function PlaidLink({
 
     const onSuccess = useCallback<PlaidLinkOnSuccess>(
         async (public_token: string) => {
-            await exchangePublicToken({
+            const updatedUser = await exchangePublicToken({
                 publicToken: public_token,
                 user,
             });
+            if (updatedUser) {
+                dispatch(updated(updatedUser));
+            }
             router.push("/");
         },
         [user, router],

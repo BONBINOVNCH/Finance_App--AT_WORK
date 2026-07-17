@@ -1,17 +1,14 @@
-"use client";
-
-import { useDispatch, useSelector } from "react-redux";
-import type { RootState, AppDispatch } from "@/store/store";
+import { User } from "@sentry/nextjs";
 
 export default function Header({
+    user,
     mainText,
     smallText,
 }: {
+    user: User;
     mainText: string;
     smallText: string;
 }) {
-    const user = useSelector((state: RootState) => state.user);
-    console.log(user);
     const selectedText = user.firstName;
     return (
         <header className="header font-sans rounded-xl border-b-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-100 px-6 py-10 text-center shadow-sm shadow-green-100 m-8">

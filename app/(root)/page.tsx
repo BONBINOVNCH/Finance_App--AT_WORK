@@ -1,27 +1,39 @@
 import Header from "@/components/react-components/Header";
 import RigthSidebar from "@/components/react-components/RigthSidebar";
 import TotalBalance from "@/components/react-components/TotalBalance";
-
-// import { useDispatch, useSelector } from "react-redux";
-// import type { RootState, AppDispatch } from "@/store/store";
+import { getAccounts } from "@/lib/actions/bank.actions";
+import { getCurrentUser } from "@/lib/auth";
 
 export default async function Home() {
-    // const user = useSelector((state: RootState) => state.user);
+    const loggedUser = await getCurrentUser();
+    console.log(loggedUser);
+    const accounts = await getAccounts({ userId: loggedUser._id });
+
+    if (!accounts) {
+        return;
+    }
+    console.log(accounts);
+
     return (
         <div className="home_container flex ">
             <section className="flex-1">
                 <Header
+                    user={loggedUser}
                     mainText="Welcom,"
                     smallText="Access and manage your transaction"
                 />
                 <TotalBalance
-                    totalBanks={[]}
-                    totalAccounts={2}
-                    totalCurrentBalance={13222}
+                    totalBanks={accounts?.totalBanks}
+                    totalAccounts={accounts.data.length}
+                    totalCurrentBalance={accounts.totalCurrentBalance}
                 />
             </section>
 
-            <RigthSidebar user={{}} allTransactio={[]} allBanks={[{}, {}]} />
+            <RigthSidebar
+                user={loggedUser}
+                allTransactio={[]}
+                allBanks={[{}, {}]}
+            />
         </div>
     );
 }

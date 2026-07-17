@@ -9,7 +9,7 @@ export default function RigthSidebar({
     allTransactio,
     allBanks,
 }: {
-    user: any; //<-- Дороби цей тип!!!!
+    user: User; //<-- Дороби цей тип!!!!
     allTransactio: Transaction[];
     allBanks: TotalBanks[];
 }) {
@@ -37,10 +37,10 @@ export default function RigthSidebar({
                 </div>
                 <div className="right-sidebar_header_userInfo flex flex-col">
                     <h3 className="right-sidebar_header_userInfo_name text-xl font-bold text-gray-900 tracking-tight">
-                        Andrij
+                        {user.firstName + " " + user.lastName}
                     </h3>
                     <p className="right-sidebar_header_userInfo_email text-sm font-medium text-gray-500">
-                        andri@111.com
+                        {user.email}
                     </p>
                 </div>
             </div>
