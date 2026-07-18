@@ -20,7 +20,7 @@ export default function PlaidLink({
     varient,
 }: {
     user: User;
-    varient: "primary" | "ghost";
+    varient: "primary" | "ghost" | string;
 }) {
     const dispatch = useDispatch();
     const router = useRouter();
@@ -76,11 +76,8 @@ export default function PlaidLink({
                     Connect to a bank
                 </Button>
             ) : (
-                <Button
-                    className="w-full mt-2 py-3 px-4 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-semibold text-base rounded-xl shadow-md shadow-emerald-500/10 hover:shadow-lg hover:shadow-emerald-500/20 active:scale-[0.98] transition-all duration-200  cursor-pointer"
-                    type="submit"
-                >
-                    Submit
+                <Button className="" type="submit" onClick={() => open()}>
+                    Connect to a bank
                 </Button>
             )}
         </>

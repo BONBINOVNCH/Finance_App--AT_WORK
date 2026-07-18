@@ -2,6 +2,7 @@ import CounterAnimated from "./CounterAnimated";
 import CircleChart from "./CircleChart";
 
 import type TotalBalance from "@/types/totalBalance";
+import PlaidLink from "./PlaidLink";
 
 // interface TotalBalance {
 //     totalBanks: []; // <--- Не забудь тут поміняти тип !!!!!!!

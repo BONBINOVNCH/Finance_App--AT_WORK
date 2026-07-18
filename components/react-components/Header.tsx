@@ -1,4 +1,5 @@
 import { User } from "@sentry/nextjs";
+import PlaidLink from "./PlaidLink";
 
 export default function Header({
     user,

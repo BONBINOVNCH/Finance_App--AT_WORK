@@ -6,11 +6,11 @@ import { getCurrentUser } from "@/lib/auth";
 
 export default async function Home() {
     const loggedUser = await getCurrentUser();
-    console.log(loggedUser);
+    // console.log(loggedUser);
     const accounts = await getAccounts({ userId: loggedUser._id });
     const account = await getAccount({ bankId: accounts.data[0].bankId });
 
-    console.log(account);
+    //console.log(account);
 
     if (!accounts) {
         return;
