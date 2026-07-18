@@ -1,8 +1,9 @@
 import User from "@/types/user";
-import TotalBanks from "@/types/totalBanks";
+
 import Transaction from "@/types/transaction";
 import Image from "next/image";
 import UserCard from "./UserCard";
+import { TotalBank } from "@/types/BanksTypes";
 
 export default function RigthSidebar({
     user,
@@ -11,7 +12,7 @@ export default function RigthSidebar({
 }: {
     user: User;
     allTransactio: Transaction[];
-    allBanks: TotalBanks[];
+    allBanks: TotalBank[];
 }) {
     return (
         <aside className="right-sidebar scrollbar-none hidden xl:flex h-screen w-[392px] flex-col border-l border-gray-100 bg-white shadow-sm ">
@@ -58,13 +59,16 @@ export default function RigthSidebar({
                         <div className="right-sidebar_banks_cards_container relative w-full max-w-[320px]">
                             <div className="right-sidebar_banks_card_container relative z-[4]">
                                 <div className="right-sidebar_banks_card_personal_container">
-                                    <UserCard />
+                                    <UserCard user={user} bank={allBanks[0]} />
                                 </div>
 
                                 {allBanks[1] ? (
                                     <div className="right-sidebar_banks_card_container absolute z-[-10] top-4 left-5 w-full opacity-45 transition-all duration-300 hover:opacity-85 hover:translate-x-2">
                                         <div className="right-sidebar_banks_card_personal_container">
-                                            <UserCard />
+                                            <UserCard
+                                                user={user}
+                                                bank={allBanks[1]}
+                                            />
                                         </div>
                                     </div>
                                 ) : null}

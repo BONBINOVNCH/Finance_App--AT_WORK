@@ -8,3 +8,17 @@ export interface BankType {
     sharableId: string;
     createdAt: string;
 }
+
+export interface TotalBank {
+    id: string;
+    bankId: string;
+    institutionId: string;
+    sharaebleId: string;
+    name: string;
+    officialName: string;
+    type: "depository" | string;
+    subtype: "checking" | string;
+    mask: string;
+    currentBalance: number;
+    availableBalance: number;
+}

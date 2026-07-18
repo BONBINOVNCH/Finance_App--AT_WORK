@@ -1,6 +1,14 @@
+import { TotalBank } from "@/types/BanksTypes";
+import User from "@/types/user";
 import Image from "next/image";
 
-export default function UserCard() {
+export default function UserCard({
+    user,
+    bank,
+}: {
+    user: User;
+    bank: TotalBank;
+}) {
     return (
         <section className=" relative w-[320px] h-[190px] rounded-2xl  p-5 flex flex-col justify-between text-white shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl overflow-hidden select-none">
             <div className="absolute inset-0  ">
@@ -16,10 +24,10 @@ export default function UserCard() {
             <div className="flex justify-between items-start z-10">
                 <div className="flex flex-col gap-1">
                     <h3 className="text-xs font-medium tracking-wider text-sky-100/80 uppercase">
-                        JS Mastery Pro.
+                        {user.firstName} | {user.lastName}
                     </h3>
                     <h3 className="text-2xl font-bold tracking-tight">
-                        $1,230.00
+                        $ {bank.currentBalance}
                     </h3>
                 </div>
 
@@ -45,7 +53,7 @@ export default function UserCard() {
                             Card Holder
                         </span>
                         <h4 className="text-sm font-semibold tracking-wide">
-                            Adrian Hajdin
+                            {user.firstName} {user.lastName}
                         </h4>
                     </div>
 
