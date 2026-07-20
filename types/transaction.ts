@@ -12,7 +12,7 @@ export default interface Transaction {
     image: string;
     type: string;
     $createdAt: string;
-    channel: string;
+    payment_channel: string;
     senderBankId: string;
     receiverBankId: string;
 }

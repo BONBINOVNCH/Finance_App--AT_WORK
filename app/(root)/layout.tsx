@@ -1,12 +1,14 @@
 import MobileNavbar from "@/components/react-components/MobileNavbar";
 import Sidebar from "@/components/react-components/Sidebar";
+import { getCurrentUser } from "@/lib/auth";
 import Image from "next/image";
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const loggedUser = await getCurrentUser();
     const logged = {
         name: "Max",
         surname: "Zal",
@@ -14,7 +16,7 @@ export default function DashboardLayout({
     return (
         <main className="flex h-screen">
             <aside className="border-r-1 border-emerald-100">
-                <Sidebar user={logged} />
+                <Sidebar user={loggedUser} />
             </aside>
             <div className="main_block flex-1 ">
                 <div className="navbar_mobile_container ">

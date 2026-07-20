@@ -9,30 +9,36 @@ import type User from "@/types/user";
 import { AiOutlineHome } from "react-icons/ai";
 import { CiCoinInsert } from "react-icons/ci";
 import { MdHistoryEdu, MdAddCard } from "react-icons/md";
+import PlaidLink from "./PlaidLink";
 
 // interface User {} // <--- Згодом дороби цей тип!!!!!!!!!
 
-const navLinks = [
-    { href: "/", label: "Home", icon: <AiOutlineHome className="text-xl" /> },
-    {
-        href: "/my_banks",
-        label: "My Banks",
-        icon: <CiCoinInsert className="text-xl" />,
-    },
-    {
-        href: "/transaction_history",
-        label: "Transaction History",
-        icon: <MdHistoryEdu className="text-xl" />,
-    },
-    {
-        href: "/connect_bank",
-        label: "Connect Bank",
-        icon: <MdAddCard className="text-xl" />,
-    },
-];
-
 export default function Sidebar({ user }: { user: any }) {
     // <--- Маєш то доробити!!!!!!
+
+    const navLinks = [
+        {
+            href: "/",
+            label: "Home",
+            icon: <AiOutlineHome className="text-xl" />,
+        },
+        {
+            href: "/my_banks",
+            label: "My Banks",
+            icon: <CiCoinInsert className="text-xl" />,
+        },
+        {
+            href: "/transaction_history",
+            label: "Transaction History",
+            icon: <MdHistoryEdu className="text-xl" />,
+        },
+        {
+            href: "/connect_bank",
+            label: "Connect Bank",
+            icon: <MdAddCard className="text-xl" />,
+            content: <PlaidLink varient="string" user={user} />,
+        },
+    ];
 
     const pathname = usePathname();
 
@@ -84,6 +90,7 @@ export default function Sidebar({ user }: { user: any }) {
                         </Link>
                     );
                 })}
+                {/* <PlaidLink varient="string" user={user} /> */}
             </nav>
         </section>
     );

@@ -8,11 +8,11 @@ import { formUrl } from "@/lib/utils";
 
 export default function BankTab({
     bankId,
-    key,
+    startLoading,
     account,
 }: {
-    key: string;
     bankId?: string;
+    startLoading: () => void;
     account: TotalBank;
 }) {
     const searchParams = useSearchParams();
@@ -21,6 +21,8 @@ export default function BankTab({
     const active = bankId === account.bankId;
 
     const onClickHandle = () => {
+        startLoading();
+
         const url = formUrl({
             searchParams: searchParams.toString(),
             value: account.bankId,
@@ -30,7 +32,7 @@ export default function BankTab({
     };
 
     return (
-        <TabsTrigger onClick={onClickHandle} key={key} value={account.id}>
+        <TabsTrigger onClick={onClickHandle} value={account.id}>
             <p className={active ? "text-green-700" : "text-gray-600"}>
                 {account.name}
             </p>

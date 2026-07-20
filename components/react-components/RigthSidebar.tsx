@@ -84,7 +84,7 @@ export default function RigthSidebar({
                     )}
                 </div>
             </div>
-            <PlaidLink user={user} varient="string" />
+            {/* <PlaidLink user={user} varient="string" /> */}
         </aside>
     );
 }
