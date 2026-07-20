@@ -1,1 +1,18 @@
-export default interface Transaction {} // <--- Згодом дороби цей тип!!!!!!!!!
+export default interface Transaction {
+    id: string;
+    $id: string;
+    name: string;
+    paymentChannel: string;
+    transaction_id: string;
+    accountId: string;
+    amount: number;
+    pending: boolean;
+    category: string;
+    date: string;
+    image: string;
+    type: string;
+    $createdAt: string;
+    channel: string;
+    senderBankId: string;
+    receiverBankId: string;
+}

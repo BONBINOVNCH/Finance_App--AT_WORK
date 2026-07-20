@@ -1,5 +1,7 @@
+import { TotalBank } from "./BanksTypes";
+
 export default interface TotalBalance {
-    totalBanks: []; // <--- Не забудь тут поміняти тип !!!!!!!
+    totalBanks: TotalBank[];
     totalAccounts: number;
     totalCurrentBalance: number;
 }

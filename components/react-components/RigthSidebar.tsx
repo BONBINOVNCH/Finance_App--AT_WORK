@@ -18,7 +18,7 @@ export default function RigthSidebar({
     allBanks: TotalBank[];
 }) {
     return (
-        <aside className="right-sidebar scrollbar-none hidden xl:flex h-screen w-[392px] flex-col border-l border-gray-100 bg-white shadow-sm ">
+        <aside className="right-sidebar scrollbar-none hidden xl:flex h-screen w-[392px] flex-col border-l border-gray-100 bg-white shadow-sm">
             <section className="right-sidebar_header_colorful_section relative h-[120px] w-full overflow-hidden">
                 <Image
                     src={"/images/green-gradient.png"}

@@ -44,7 +44,7 @@ export default function UserCard({
 
             <div className="flex flex-col gap-3 z-10">
                 <h2 className="text-lg font-mono tracking-[0.2em] text-white/90 drop-shadow-sm">
-                    •••• •••• •••• 1234
+                    •••• •••• •••• {bank.mask}
                 </h2>
 
                 <div className="flex justify-between items-end">
@@ -63,7 +63,7 @@ export default function UserCard({
                                 Expires
                             </span>
                             <h4 className="text-sm font-semibold tracking-wide">
-                                06/04
+                                ••/••
                             </h4>
                         </div>
 

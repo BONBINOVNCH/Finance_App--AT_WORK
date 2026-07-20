@@ -1,6 +1,7 @@
 import connectToDB from "@/backend/config/db";
 import Bank from "@/backend/schemas/BankSchema";
 import { clsx, type ClassValue } from "clsx";
+
 import { twMerge } from "tailwind-merge";
 
 import z from "zod";
@@ -17,6 +18,34 @@ export function extractCustomerIdFromUrl(url: string) {
     const array = url.split("/");
     return array[array.length - 1];
 }
+
+export function formUrl({
+    searchParams,
+    key,
+    value,
+}: {
+    searchParams: string;
+    key: string;
+    value?: string;
+}) {
+    const params = new URLSearchParams(searchParams);
+    if (value !== undefined) {
+        params.set(key, value);
+    } else {
+        params.delete(key);
+    }
+    return params.toString() ? `?${params.toString()}` : "";
+}
+
+export const removeCharacters = (value: string) => {
+    return value.replace(/[^\w\s]/gi, "");
+};
+
+export const statusOfTransaction = (date: Date) => {
+    const now = new Date();
+    const twoDaysAgo = now.getTime() - 2 * 24 * 60 * 60 * 1000;
+    return date.getTime() < twoDaysAgo ? "Success" : "Processing";
+};
 
 // --Zod Schemas-- //
 

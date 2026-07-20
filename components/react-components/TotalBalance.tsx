@@ -4,12 +4,6 @@ import CircleChart from "./CircleChart";
 import type TotalBalance from "@/types/totalBalance";
 import PlaidLink from "./PlaidLink";
 
-// interface TotalBalance {
-//     totalBanks: []; // <--- Не забудь тут поміняти тип !!!!!!!
-//     totalAccounts: number;
-//     totalCurrentBalance: number;
-// }
-
 export default function TotalBalance({
     totalBanks,
     totalAccounts,

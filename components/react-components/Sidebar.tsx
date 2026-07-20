@@ -37,7 +37,7 @@ export default function Sidebar({ user }: { user: any }) {
     const pathname = usePathname();
 
     return (
-        <section className="sidebar flex flex-col md:w-[194px] hidden sm:block">
+        <section className="sidebar flex flex-col md:w-[194px] hidden sm:block ">
             <header className="sidebar_header md:px-3 flex justify-center  py-2  border-b border-gray-100/80">
                 <Link
                     className="flex items-center gap-3 w-max items-center md:p-1.5 transition-all duration-300 hover:bg-gray-50/50"
