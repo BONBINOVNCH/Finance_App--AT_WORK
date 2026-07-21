@@ -14,6 +14,8 @@ import {
 } from "@/lib/actions/user.actions";
 import { useDispatch } from "react-redux";
 import { updated } from "@/store/userSlice";
+import { MdAddCard } from "react-icons/md";
+import Link from "next/link";
 
 export default function PlaidLink({
     user,
@@ -76,9 +78,15 @@ export default function PlaidLink({
                     Connect to a bank
                 </Button>
             ) : (
-                <Button className="" type="submit" onClick={() => open()}>
-                    Connect to a bank
-                </Button>
+                <Link
+                    href="#"
+                    className=" flex w-max md:w-auto items-center gap-3 px-4 py-3  font-medium text-sm transition-all duration-200 hover:bg-green-50/50 text-green-700"
+                    type="submit"
+                    onClick={() => open()}
+                >
+                    <MdAddCard className="text-xl" />
+                    <span className="md:block hidden">Connect bank</span>
+                </Link>
             )}
         </>
     );

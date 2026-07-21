@@ -11,11 +11,7 @@ import { CiCoinInsert } from "react-icons/ci";
 import { MdHistoryEdu, MdAddCard } from "react-icons/md";
 import PlaidLink from "./PlaidLink";
 
-// interface User {} // <--- Згодом дороби цей тип!!!!!!!!!
-
-export default function Sidebar({ user }: { user: any }) {
-    // <--- Маєш то доробити!!!!!!
-
+export default function Sidebar({ user }: { user: User }) {
     const navLinks = [
         {
             href: "/",
@@ -31,12 +27,6 @@ export default function Sidebar({ user }: { user: any }) {
             href: "/transaction_history",
             label: "Transaction History",
             icon: <MdHistoryEdu className="text-xl" />,
-        },
-        {
-            href: "/connect_bank",
-            label: "Connect Bank",
-            icon: <MdAddCard className="text-xl" />,
-            content: <PlaidLink varient="string" user={user} />,
         },
     ];
 
@@ -90,7 +80,7 @@ export default function Sidebar({ user }: { user: any }) {
                         </Link>
                     );
                 })}
-                {/* <PlaidLink varient="string" user={user} /> */}
+                <PlaidLink varient="string" user={user} />
             </nav>
         </section>
     );
