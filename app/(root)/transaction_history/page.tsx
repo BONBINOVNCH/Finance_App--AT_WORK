@@ -50,7 +50,6 @@ export default async function Transaction_history({
                         </div>
                     </div>
 
-                    {/* Правий блок з балансом */}
                     <div className="flex flex-col sm:items-end justify-center bg-emerald-950/30 p-4 rounded-xl border border-emerald-600/20">
                         <p className="text-xs font-medium text-emerald-300 uppercase tracking-wider mb-1">
                             Current balance

@@ -6,8 +6,10 @@ import {
     ProcessorTokenCreateRequest,
     ProcessorTokenCreateRequestProcessorEnum,
     Products,
+    DepositoryAccountSubtype,
 } from "plaid";
 import { plaidClient } from "../plaid";
+
 import { encryptId } from "../utils";
 import { revalidatePath } from "next/cache";
 import { addFundingSource } from "./dwolla.actions";
@@ -34,6 +36,14 @@ export const createLinkToken = async (user: User) => {
             products: ["auth", "transactions"] as Products[],
             language: "en",
             country_codes: ["US"] as CountryCode[],
+            account_filters: {
+                depository: {
+                    account_subtypes: [
+                        DepositoryAccountSubtype.Checking,
+                        DepositoryAccountSubtype.Savings,
+                    ],
+                },
+            },
         };
 
         const response = await plaidClient.linkTokenCreate(tokenParams);
