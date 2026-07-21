@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 import type User from "@/types/user";
 
@@ -12,19 +12,21 @@ import { MdHistoryEdu, MdAddCard } from "react-icons/md";
 import PlaidLink from "./PlaidLink";
 
 export default function Sidebar({ user }: { user: User }) {
+    const searchParams = useSearchParams();
+    const id = searchParams.get("id");
     const navLinks = [
         {
-            href: "/",
+            href: id ? `/?id=${id}` : "/",
             label: "Home",
             icon: <AiOutlineHome className="text-xl" />,
         },
         {
-            href: "/my_banks",
+            href: id ? `/my_banks?id=${id}` : "/my_banks",
             label: "My Banks",
             icon: <CiCoinInsert className="text-xl" />,
         },
         {
-            href: "/transaction_history",
+            href: id ? `/transaction_history?id=${id}` : "/transaction_history",
             label: "Transaction History",
             icon: <MdHistoryEdu className="text-xl" />,
         },
@@ -33,7 +35,7 @@ export default function Sidebar({ user }: { user: User }) {
     const pathname = usePathname();
 
     return (
-        <section className="sidebar flex flex-col md:w-[194px] hidden sm:block ">
+        <section className="sidebar flex flex-col md:w-[194px] hidden sm:block overflow-hidden">
             <header className="sidebar_header md:px-3 flex justify-center  py-2  border-b border-gray-100/80">
                 <Link
                     className="flex items-center gap-3 w-max items-center md:p-1.5 transition-all duration-300 hover:bg-gray-50/50"
@@ -65,7 +67,7 @@ export default function Sidebar({ user }: { user: User }) {
 
             <nav className="sidebar_options w-max ">
                 {navLinks.map((item) => {
-                    const active = pathname === item.href;
+                    const active = pathname === item.href.split("?")[0];
                     return (
                         <Link
                             className={`flex w-max md:w-auto items-center gap-3 px-4 py-3  font-medium text-sm transition-all duration-200

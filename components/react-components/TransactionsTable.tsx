@@ -44,9 +44,9 @@ export default function TransactionTable({
     transactions: Transaction[];
 }) {
     return (
-        <div className="rounded-xl border border-stone-200/80 bg-white shadow-sm w-full overflow-hidden">
-            <div className="overflow-x-auto w-full">
-                <Table className="min-w-[600px] md:min-w-full">
+        <div className=" w-full overflow-hidden pb-8 rounded-xl">
+            <div className="overflow-x-auto w-full rounded-xl border border-stone-200/80 bg-white shadow-sm">
+                <Table className="min-w-[600px] md:min-w-full ">
                     <TableHeader className="bg-gradient-to-br from-green-50 to-emerald-100">
                         <TableRow className="hover:bg-transparent border-b border-stone-200">
                             <TableHead className="font-semibold text-green-900">

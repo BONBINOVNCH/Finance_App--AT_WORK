@@ -10,15 +10,17 @@ export default function BankTab({
     bankId,
     startLoading,
     account,
+    index,
 }: {
     bankId?: string;
     startLoading: () => void;
     account: TotalBank;
+    index: number;
 }) {
     const searchParams = useSearchParams();
     const router = useRouter();
     const pathName = usePathname();
-    const active = bankId === account.bankId;
+    const active = bankId ? bankId === account.bankId : index === 0;
 
     const onClickHandle = () => {
         startLoading();
@@ -32,7 +34,7 @@ export default function BankTab({
     };
 
     return (
-        <TabsTrigger onClick={onClickHandle} value={account.id}>
+        <TabsTrigger onClick={onClickHandle} value={account.bankId}>
             <p className={active ? "text-green-700" : "text-gray-600"}>
                 {account.name}
             </p>

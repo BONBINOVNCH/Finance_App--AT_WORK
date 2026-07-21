@@ -5,7 +5,7 @@ import { FaRegCreditCard } from "react-icons/fa";
 export default function BankTabContent({ account }: { account: TotalBank }) {
     return (
         <TabsContent
-            value={account.id}
+            value={account.bankId}
             className="mt-0 focus-visible:outline-none"
         >
             <div className="tabContent flex items-center justify-between w-full p-4 rounded-xl border border-emerald-100 bg-gradient-to-br from-white to-emerald-50/20 shadow-sm transition-all hover:shadow-md hover:border-emerald-200 mb-4">

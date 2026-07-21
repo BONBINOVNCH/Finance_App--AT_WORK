@@ -31,11 +31,12 @@ export default async function Home({
 
     return (
         <div className="home_container flex ">
-            <section className="flex-1 overflow-x-auto scrollbar-none sm:h-screen">
+            <section className="flex-1 overflow-x-auto scrollbar-none sm:h-screen ">
                 <Header
                     user={loggedUser}
                     mainText="Welcom,"
                     smallText="Access and manage your transaction"
+                    selectedText={loggedUser.firstName}
                 />
                 <TotalBalance
                     totalBanks={accounts.data}

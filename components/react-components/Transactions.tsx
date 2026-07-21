@@ -7,6 +7,7 @@ import BankTabContent from "./BankTabContent";
 import TransactionTable from "./TransactionsTable";
 import { useEffect, useState } from "react";
 import SkeletonTransaction from "./SkeletonTransaction";
+import { useSearchParams } from "next/navigation";
 
 export default function Transactions({
     accounts,
@@ -23,6 +24,8 @@ export default function Transactions({
     //console.log(accounts);
 
     const [loading, setLoading] = useState(false);
+    const searchParams = useSearchParams();
+    const id = searchParams.get("id");
     console.log(loading);
     useEffect(() => {
         setLoading(false);
@@ -30,14 +33,15 @@ export default function Transactions({
 
     return (
         <section className="transactions block w-auto m-8 h-screen">
-            <Tabs defaultValue={accounts[0].id}>
+            <Tabs defaultValue={id ? id : accounts[0].bankId}>
                 <TabsList>
-                    {accounts.map((account: TotalBank) => (
+                    {accounts.map((account: TotalBank, index: number) => (
                         <BankTab
                             key={account.id}
                             startLoading={() => setLoading(true)}
                             bankId={bankId}
                             account={account}
+                            index={index}
                         />
                     ))}
                 </TabsList>
