@@ -30,6 +30,13 @@ export default function BankTab({
             value: account.bankId,
             key: "id",
         });
+
+        const pageUrl = formUrl({
+            searchParams: searchParams.toString(),
+            value: "1",
+            key: "page",
+        });
+
         router.push(`${pathName}${url}`);
     };
 
