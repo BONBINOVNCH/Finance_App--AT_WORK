@@ -26,7 +26,7 @@ export default function UserCard({
                 <div className="flex justify-between items-start z-10">
                     <div className="flex flex-col gap-1">
                         <h3 className="text-xs font-medium tracking-wider text-sky-100/80 uppercase">
-                            {user.firstName} | {user.lastName}
+                            {bank.name}
                         </h3>
                         <h3 className="text-2xl font-bold tracking-tight">
                             $ {bank.currentBalance}
