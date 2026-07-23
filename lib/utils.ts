@@ -1,5 +1,6 @@
 import connectToDB from "@/backend/config/db";
 import Bank from "@/backend/schemas/BankSchema";
+import Transaction from "@/types/transaction";
 import { clsx, type ClassValue } from "clsx";
 
 import { twMerge } from "tailwind-merge";
@@ -45,6 +46,24 @@ export const statusOfTransaction = (date: Date) => {
     const now = new Date();
     const twoDaysAgo = now.getTime() - 2 * 24 * 60 * 60 * 1000;
     return date.getTime() < twoDaysAgo ? "Success" : "Processing";
+};
+
+export const countCategories = (transactions: Transaction[]) => {
+    const categories: { [category: string]: number } = {};
+
+    transactions &&
+        transactions.forEach((transaction) => {
+            if (categories.hasOwnProperty(transaction.category[0])) {
+                categories[transaction.category[0]] += 1;
+            } else {
+                categories[transaction.category[0]] = 1;
+            }
+        });
+    let array = Object.entries(categories);
+    array.sort((a, b) => b[1] - a[1]);
+    const result = Object.fromEntries(array);
+
+    return result;
 };
 
 // --Zod Schemas-- //

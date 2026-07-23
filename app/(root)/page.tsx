@@ -54,7 +54,7 @@ export default async function Home({
 
             <RigthSidebar
                 user={loggedUser}
-                allTransactio={accounts?.transactions}
+                allTransactio={account?.transactions}
                 allBanks={accounts.data?.slice(0, 2)}
             />
         </div>

@@ -6,7 +6,7 @@ import Transaction from "@/types/transaction";
 import Image from "next/image";
 import UserCard from "./UserCard";
 import { TotalBank } from "@/types/BanksTypes";
-import PlaidLink from "./PlaidLink";
+import Category from "./Category";
 
 export default function RigthSidebar({
     user,
@@ -84,7 +84,7 @@ export default function RigthSidebar({
                     )}
                 </div>
             </div>
-            {/* <PlaidLink user={user} varient="string" /> */}
+            <Category transactions={allTransactio} />
         </aside>
     );
 }
