@@ -13,20 +13,51 @@ import PlaidLink from "./PlaidLink";
 
 export default function Sidebar({ user }: { user: User }) {
     const searchParams = useSearchParams();
+
     const id = searchParams.get("id");
+    const page = searchParams.get("page");
+
+    const createLink = (baseLink: string) => {
+        const params = new URLSearchParams();
+        if (id) params.set("id", id);
+        if (page) params.set("page", page);
+
+        const query = params.toString();
+
+        return query ? `${baseLink}?${query}` : baseLink;
+    };
+
+    // const navLinks = [
+    //     {
+    //         href: id ? `/?id=${id}` : "/",
+    //         label: "Home",
+    //         icon: <AiOutlineHome className="text-xl" />,
+    //     },
+    //     {
+    //         href: id ? `/my_banks?id=${id}` : "/my_banks",
+    //         label: "My Banks",
+    //         icon: <CiCoinInsert className="text-xl" />,
+    //     },
+    //     {
+    //         href: id ? `/transaction_history?id=${id}` : "/transaction_history",
+    //         label: "Transaction History",
+    //         icon: <MdHistoryEdu className="text-xl" />,
+    //     },
+    // ];
+
     const navLinks = [
         {
-            href: id ? `/?id=${id}` : "/",
+            href: createLink("/"),
             label: "Home",
             icon: <AiOutlineHome className="text-xl" />,
         },
         {
-            href: id ? `/my_banks?id=${id}` : "/my_banks",
+            href: createLink("my_banks"),
             label: "My Banks",
             icon: <CiCoinInsert className="text-xl" />,
         },
         {
-            href: id ? `/transaction_history?id=${id}` : "/transaction_history",
+            href: createLink("transaction_history"),
             label: "Transaction History",
             icon: <MdHistoryEdu className="text-xl" />,
         },

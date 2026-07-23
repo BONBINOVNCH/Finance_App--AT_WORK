@@ -28,7 +28,7 @@ export default function Transactions({
     const searchParams = useSearchParams();
     const id = searchParams.get("id");
     const currentPage = searchParams.get("page") || "1";
-    console.log(loading);
+
     useEffect(() => {
         setLoading(false);
     }, [transactions, bankId]);
@@ -38,8 +38,6 @@ export default function Transactions({
     const firstRowIndex = lastRowIndex - maxRows;
 
     const currentTransactions = transactions.slice(firstRowIndex, lastRowIndex);
-
-    console.log(currentPage);
 
     const startLoading = useCallback(() => {
         setLoading(true);

@@ -1,4 +1,6 @@
 import Header from "@/components/react-components/Header";
+import { PaginationBlock } from "@/components/react-components/PaginationBlock";
+import TransactionCover from "@/components/react-components/TransactionCover";
 import TransactionTable from "@/components/react-components/TransactionsTable";
 import { getAccount, getAccounts } from "@/lib/actions/bank.actions";
 import { getCurrentUser } from "@/lib/auth";
@@ -27,6 +29,7 @@ export default async function Transaction_history({
     if (!accounts) {
         return;
     }
+
     return (
         <div className="transactionHistory ">
             <Header
@@ -59,7 +62,18 @@ export default async function Transaction_history({
                         </h2>
                     </div>
                 </div>
-                <TransactionTable transactions={account?.transactions} />
+                {/* <TransactionTable transactions={account?.transactions} />
+                <PaginationBlock
+                    //startLoading={() => startLoading()}
+                    pages={Math.ceil(
+                        account?.transactions.length / 10,
+                    ).toString()}
+                    currentPage={numberPage.toString()}
+                /> */}
+                <TransactionCover
+                    transactions={account?.transactions}
+                    numberPage={numberPage.toString()}
+                />
             </div>
         </div>
     );
