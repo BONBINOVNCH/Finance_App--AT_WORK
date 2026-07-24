@@ -9,10 +9,7 @@ export default async function DashboardLayout({
     children: React.ReactNode;
 }>) {
     const loggedUser = await getCurrentUser();
-    const logged = {
-        name: "Max",
-        surname: "Zal",
-    };
+
     return (
         <main className="flex h-screen">
             <aside className="border-r-1 border-emerald-100">
@@ -28,7 +25,7 @@ export default async function DashboardLayout({
                             height={30}
                         />
                         <div className="navbar_mobile_main ">
-                            <MobileNavbar />
+                            <MobileNavbar user={loggedUser} />
                         </div>
                     </div>
                 </div>
