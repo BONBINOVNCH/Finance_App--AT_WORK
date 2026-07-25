@@ -9,6 +9,7 @@ import { useCallback, useEffect, useState } from "react";
 import SkeletonTransaction from "./SkeletonTransaction";
 import { useSearchParams } from "next/navigation";
 import { PaginationBlock } from "./PaginationBlock";
+import Transaction from "@/types/transaction";
 
 export default function Transactions({
     accounts,
@@ -16,13 +17,12 @@ export default function Transactions({
     bankId,
     page,
 }: {
-    accounts: any; //<--- Дороби цей тип!!!
-    transactions: any; //<--- Дороби цей тип!!!
+    accounts: TotalBank[];
+    transactions: Transaction[];
     bankId?: string;
     page: number;
 }) {
     transactions;
-    //console.log(accounts);
 
     const [loading, setLoading] = useState(false);
     const searchParams = useSearchParams();

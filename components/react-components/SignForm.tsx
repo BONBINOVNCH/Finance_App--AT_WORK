@@ -14,8 +14,7 @@ import InputTemplate from "./InputTemplate";
 import signUpUser from "@/app/(auth)/sign_up/action";
 import loginUser from "@/app/(auth)/login/action";
 import User from "@/types/user";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
+
 import PlaidLink from "./PlaidLink";
 
 export default function SignForm({

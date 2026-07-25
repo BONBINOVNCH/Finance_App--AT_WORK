@@ -2,7 +2,6 @@ import CounterAnimated from "./CounterAnimated";
 import CircleChart from "./CircleChart";
 
 import type TotalBalance from "@/types/totalBalance";
-import PlaidLink from "./PlaidLink";
 
 export default function TotalBalance({
     totalBanks,

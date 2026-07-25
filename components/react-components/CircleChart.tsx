@@ -1,12 +1,15 @@
 "use client";
 
+import { TotalBank } from "@/types/BanksTypes";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-export default function CircleChart({ totalBanks }: { totalBanks: any[] }) {
-    //<---- Дороби цей тип!!!!!
-
+export default function CircleChart({
+    totalBanks,
+}: {
+    totalBanks: TotalBank[];
+}) {
     const bankNames = totalBanks.map((bank) => bank.name);
     const bankBalances = totalBanks.map((bank) => bank.currentBalance);
 

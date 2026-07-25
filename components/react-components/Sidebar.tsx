@@ -1,12 +1,10 @@
-import { IoLogOutOutline } from "react-icons/io5";
-
 import Link from "next/link";
 import Image from "next/image";
 
 import type User from "@/types/user";
 
 import NavbarMap from "./NavbarMap";
-import { logoutCurrentUser } from "@/lib/auth";
+
 import LogoutButton from "./Logout";
 
 export default function Sidebar({ user }: { user: User }) {

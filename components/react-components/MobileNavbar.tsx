@@ -78,21 +78,7 @@ export default function MobileNavbar({ user }: { user: User }) {
                             </div>
                         </Link>
                     </header>
-                    {/* {navLinks.map((item) => {
-                        const active = pathname === item.href;
-                        return (
-                            <Link
-                                className={`flex w-auto items-center gap-3 px-4 py-3  font-medium text-sm transition-all duration-200
-                                    ${active ? "bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 font-semibold border-l-4 border-green-500 rounded-l-none" : "text-green-800/80 hover:bg-green-50/50 hover:text-green-700"}`}
-                                key={item.href}
-                                href={item.href}
-                            >
-                                {item.icon}{" "}
-                                <span className="">{item.label}</span>
-                            </Link>
-                        );
-                    })}
-                    <PlaidLink varient="string" type="mobile" user={user} /> */}
+
                     <NavbarMap user={user} type={"mobile"} />
                     <LogoutButton type="mobile" user={user} />
                 </SheetContent>
