@@ -21,6 +21,9 @@ import {
 } from "@/components/ui/sheet";
 import { IoLogOutOutline } from "react-icons/io5";
 import User from "@/types/user";
+import PlaidLink from "./PlaidLink";
+import NavbarMap from "./NavbarMap";
+import LogoutButton from "./Logout";
 
 const navLinks = [
     { href: "/", label: "Home", icon: <AiOutlineHome className="text-xl" /> },
@@ -75,7 +78,7 @@ export default function MobileNavbar({ user }: { user: User }) {
                             </div>
                         </Link>
                     </header>
-                    {navLinks.map((item) => {
+                    {/* {navLinks.map((item) => {
                         const active = pathname === item.href;
                         return (
                             <Link
@@ -89,25 +92,9 @@ export default function MobileNavbar({ user }: { user: User }) {
                             </Link>
                         );
                     })}
-
-                    <div className="logout flex items-center gap-3 p-3 md:m-2 md:rounded-xl bg-gray-50/80 hover:bg-emerald-50/60 border border-gray-100 transition-all duration-200 group cursor-pointer">
-                        <div className="logout_avatar flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-tr from-green-500 to-emerald-400 text-white font-bold text-sm shadow-sm shrink-0 group-hover:scale-105 transition-transform duration-200">
-                            {user.firstName?.split("")[0].toUpperCase()}
-                        </div>
-
-                        <div className="logout_info flex flex-col min-w-0 flex-1 leading-tight">
-                            <p className="logout_firstname text-sm font-semibold text-gray-800 truncate">
-                                {user.firstName}
-                            </p>
-                            <p className="logout_email text-xs text-gray-500 truncate">
-                                {user.email}
-                            </p>
-                        </div>
-
-                        <div className="logout_icon flex flex-1 items-center justify-end text-gray-400 group-hover:text-red-500 transition-colors duration-200 text-xl shrink-0">
-                            <IoLogOutOutline className=" h-full w-[28px]" />
-                        </div>
-                    </div>
+                    <PlaidLink varient="string" type="mobile" user={user} /> */}
+                    <NavbarMap user={user} type={"mobile"} />
+                    <LogoutButton type="mobile" user={user} />
                 </SheetContent>
             </Sheet>
         </section>

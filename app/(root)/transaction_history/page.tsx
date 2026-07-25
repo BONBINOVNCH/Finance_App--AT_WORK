@@ -31,7 +31,7 @@ export default async function Transaction_history({
     }
 
     return (
-        <div className="transactionHistory ">
+        <div className="transactionHistory overflow-x-auto scrollbar-none sm:h-screen">
             <Header
                 smallText="See all your transactions in one place"
                 mainText="Transaction history"

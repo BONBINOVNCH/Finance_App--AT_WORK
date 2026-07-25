@@ -20,9 +20,11 @@ import Link from "next/link";
 export default function PlaidLink({
     user,
     varient,
+    type,
 }: {
     user: User;
     varient: "primary" | "ghost" | string;
+    type?: "mobile";
 }) {
     const dispatch = useDispatch();
     const router = useRouter();
@@ -85,7 +87,13 @@ export default function PlaidLink({
                     onClick={() => open()}
                 >
                     <MdAddCard className="text-xl" />
-                    <span className="md:block hidden">Connect bank</span>
+                    <span
+                        className={
+                            type !== "mobile" ? "md:block hidden" : "block"
+                        }
+                    >
+                        Connect bank
+                    </span>
                 </Link>
             )}
         </>

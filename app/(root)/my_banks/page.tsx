@@ -31,7 +31,7 @@ export default async function My_banks({
 
     return (
         <>
-            <div className="myBanks">
+            <div className="myBanks overflow-x-auto scrollbar-none sm:h-screen">
                 <Header
                     smallText="See all your connected banks"
                     mainText="Bank accounts"

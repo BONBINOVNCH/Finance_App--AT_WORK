@@ -1,3 +1,5 @@
+"use server";
+
 import connectToDB from "@/backend/config/db";
 import User from "@/backend/schemas/UserSchema";
 import { SignJWT, jwtVerify } from "jose";
