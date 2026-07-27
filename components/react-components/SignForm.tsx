@@ -62,6 +62,18 @@ export default function SignForm({
             if (varient === "sign-up") {
                 const result = await signUpUser(data);
                 console.log(result);
+                if (result?.error === "same_email") {
+                    form.setError("email", {
+                        type: "manual",
+                        message: "This email alredy exist",
+                    });
+                }
+                if (result?.error === "same_snn") {
+                    form.setError("ssn", {
+                        type: "manual",
+                        message: "This ssn alredy exist",
+                    });
+                }
             }
         } catch {
         } finally {
