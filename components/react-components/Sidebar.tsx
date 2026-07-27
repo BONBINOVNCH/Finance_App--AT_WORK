@@ -34,12 +34,6 @@ export default function Sidebar({ user }: { user: User }) {
                         </div>
                     </Link>
                 </header>
-                <div className="input_container grow hidden md:inline-block  mx-4 my-4">
-                    <input
-                        type="text"
-                        className=" h-8 p-3 border border-gray-300 rounded-md text-sm w-full outline-none focus:border-green-500"
-                    />
-                </div>
 
                 <NavbarMap user={user} />
             </div>
