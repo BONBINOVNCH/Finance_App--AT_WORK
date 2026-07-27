@@ -58,6 +58,16 @@ export default function SignForm({
             if (varient === "login") {
                 const result = await loginUser(data);
                 console.log(result);
+                if (!result?.success) {
+                    form.setError("email", {
+                        type: "manual",
+                        message: "Not right email or password",
+                    });
+                    form.setError("password", {
+                        type: "manual",
+                        message: "Not right email or password",
+                    });
+                }
             }
             if (varient === "sign-up") {
                 const result = await signUpUser(data);
