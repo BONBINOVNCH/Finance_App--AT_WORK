@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { updated } from "@/store/userSlice";
 import { MdAddCard } from "react-icons/md";
 import Link from "next/link";
+import { Spinner } from "../ui/spinner";
 
 export default function PlaidLink({
     user,
@@ -30,6 +31,7 @@ export default function PlaidLink({
     const router = useRouter();
 
     const [token, setToken] = useState("");
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const getLinkToken = async () => {
@@ -43,6 +45,7 @@ export default function PlaidLink({
 
     const onSuccess = useCallback<PlaidLinkOnSuccess>(
         async (public_token: string) => {
+            setLoading(true);
             const updatedUser = await exchangePublicToken({
                 publicToken: public_token,
                 user,
@@ -68,9 +71,9 @@ export default function PlaidLink({
                 <Button
                     className="w-full mt-2 py-3 px-4 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-semibold text-base rounded-xl shadow-md shadow-emerald-500/10 hover:shadow-lg hover:shadow-emerald-500/20 active:scale-[0.98] transition-all duration-200  cursor-pointer"
                     onClick={() => open()}
-                    disabled={!ready}
+                    disabled={!ready || loading}
                 >
-                    Connect to a bank
+                    {!loading ? "Connect to a bank" : <Spinner />}
                 </Button>
             ) : varient === "ghost" ? (
                 <Button

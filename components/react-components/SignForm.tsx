@@ -16,6 +16,7 @@ import loginUser from "@/app/(auth)/login/action";
 import User from "@/types/user";
 
 import PlaidLink from "./PlaidLink";
+import { Spinner } from "../ui/spinner";
 
 export default function SignForm({
     varient,
@@ -55,6 +56,7 @@ export default function SignForm({
     async function onSubmit(data: z.infer<typeof personalFormSchema>) {
         try {
             setLoading(true);
+            console.log(loading);
             if (varient === "login") {
                 const result = await loginUser(data);
                 console.log(result);
@@ -70,6 +72,7 @@ export default function SignForm({
                 }
             }
             if (varient === "sign-up") {
+                setLoading(true);
                 const result = await signUpUser(data);
                 console.log(result);
                 if (result?.error === "same_email") {
@@ -145,10 +148,11 @@ export default function SignForm({
                                 label="Password"
                             />
                             <Button
+                                disabled={loading}
                                 className="w-full mt-2 py-3 px-4 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-semibold text-base rounded-xl shadow-md shadow-emerald-500/10 hover:shadow-lg hover:shadow-emerald-500/20 active:scale-[0.98] transition-all duration-200  cursor-pointer"
                                 type="submit"
                             >
-                                Submit
+                                {!loading ? "Submit" : <Spinner />}
                             </Button>
                             <div className="mt-8 text-center text-sm text-gray-400">
                                 Don't have an account?{" "}
@@ -248,7 +252,7 @@ export default function SignForm({
                                 type="submit"
                                 className="w-full mt-2 py-3 px-4 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-semibold text-base rounded-xl shadow-md shadow-emerald-500/10 hover:shadow-lg hover:shadow-emerald-500/20 active:scale-[0.98] transition-all duration-200  cursor-pointer"
                             >
-                                Submit
+                                {!loading ? "Submit" : <Spinner />}
                             </Button>
 
                             <div className="mt-8 text-center text-sm text-gray-400">
