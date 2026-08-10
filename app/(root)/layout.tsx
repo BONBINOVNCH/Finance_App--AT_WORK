@@ -2,6 +2,7 @@ import MobileNavbar from "@/components/react-components/MobileNavbar";
 import Sidebar from "@/components/react-components/Sidebar";
 import { getCurrentUser } from "@/lib/auth";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({
     children,
@@ -9,6 +10,10 @@ export default async function DashboardLayout({
     children: React.ReactNode;
 }>) {
     const loggedUser = await getCurrentUser();
+
+    if (!loggedUser) {
+        await redirect("/sign_up");
+    }
 
     return (
         <main className="flex h-screen">
