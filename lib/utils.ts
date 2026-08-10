@@ -180,8 +180,8 @@ export const formSchema = (varient: string) =>
                 ? z.string().min(3).max(6).optional()
                 : z
                       .string()
-                      .min(3, { message: "Postal code is too short" })
-                      .max(6, { message: "Postal code is too long" }),
+                      .min(5, { message: "Postal code is too short" })
+                      .max(5, { message: "Postal code is too long" }),
 
         dateOfBirth:
             varient === "login"
